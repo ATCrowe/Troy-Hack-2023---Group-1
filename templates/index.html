@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Therapist</title>
+    <style>
+        body {
+            background-color: lightblue;
+            background-image: url(cool-background.png);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            background-color: #3b53ebf6;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #chat {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #chat-container {
+            max-height: 300px;
+            overflow: auto;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #send-button {
+            padding: 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Therapist</h1>
+    <div id="chat">
+        <div id="chat-container"></div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value;
+            userInput.value = '';
+            addMessage('You', message);
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const aiResponse = data.ai_response;
+                addMessage('AI', aiResponse);
+            })
+            .catch(error => console.error(error));
+        });
+
+        function addMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = `${sender}: ${message}`;
+            chatContainer.appendChild(messageDiv);
+        }
+    </script>
+</body>
+</html>
