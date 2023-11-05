@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Box</title>
+    <style>
+        body {
+            background-color: lightblue;
+            background-image: url(cool-background.png);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #3b53ebf6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .chatbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .chatbox {
+            width: 300px;
+            max-height: 500px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .message {
+            background-color: #3b53ebf6;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-width: 70%; /* Adjust as needed */
+            align-self: flex-end; /* Right-align user messages */
+        }
+
+        .bot-message {
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-width: 70%; /* Adjust as needed */
+            align-self: flex-start; /* Left-align bot messages */
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #send-button {
+            padding: 5px 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .menu-bar {
+            background-color: white;
+            height: 5px;
+            width: 25px;
+            display: block;
+            margin: 4px 0;
+            border-radius: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Chat Box</h1>
+    </div>
+    <div class="chatbox-container">
+        <div class="chatbox" id="chatbox">
+            <div class="bot-message">Hello! How can I assist you today?</div>
+        </div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+        <div class="menu-icon" onclick="toggleDropdown()">
+            <div class="menu-bar"></div>
+            <div class="menu-bar"></div>
+            <div class="menu-bar"></div>
+        </div>
+        <div class="dropdown-content">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+        </div>
+    </div>
+    <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        function sendMessage() {
+            const userMessage = document.getElementById("user-input").value;
+            const chatbox = document.getElementById("chatbox");
+            
+            if (userMessage.trim() === "") {
+                return; // Don't add empty messages
+            }
+            
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.className = "message";
+            userMessageDiv.textContent = userMessage;
+            chatbox.appendChild(userMessageDiv);
+            
+            document.getElementById("user-input").value = ""; // Clear the input field
+            
+            // Simulated bot response
+            setTimeout(function() {
+                const botMessageDiv = document.createElement("div");
+                botMessageDiv.className = "bot-message";
+                botMessageDiv.textContent = "Thank you for your message.";
+                chatbox.appendChild(botMessageDiv);
+            }, 1000); // Simulated response delay
+        }
+
+        function toggleDropdown() {
+            const dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
+
+

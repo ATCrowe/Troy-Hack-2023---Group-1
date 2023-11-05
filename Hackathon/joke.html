@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        body{
+            background-color: lightblue;
+            background-image: url(cool-background.png);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .para{
+            margin-bottom: 30px;
+            font-size: 25px;
+        }
+
+        .header {
+            background-color: #3b53ebf6;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            width: cover;
+
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3b53ebf6;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            padding: 15px;
+            margin-left: 20px;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            display: none;
+        }
+
+        .menu-items.show {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #3b53ebf6;
+            width: 100%;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 80px 20px 20px 20px;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        </style>
+    </head>
+
+    <hr>
+    <div class="para">
+    <body>
+        <div class="header">
+            <h1>More Information</h1>
+        </div>
+        <div class="menu">
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="menu-items" id="menuItems">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="joke.html">More Information</a></li>
+                <li><a href="Amyyy.html">About Us</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+        <p align = "center">
+            Depression is a complex and deeply challenging mental
+            health condition that can cast a heavy shadow over the lives
+            of those who experience it. Its difficulty lies in the
+            profound and persistent feelings of sadness, hopelessness,
+            and emotional numbness that often accompany it. Depression can
+            sap a person's energy, making even the simplest daily tasks
+            seem insurmountable. It can distort one's perception of the
+            world, leading to a pervasive sense of self-doubt and
+            self-criticism. Additionally, the social stigma surrounding
+            mental health issues can make it difficult for individuals to
+            seek help and support, exacerbating their suffering.
+            Overcoming depression often requires a combination of therapy,
+            medication, and a strong support system, making it a
+            formidable challenge for those affected. This website was
+            created so that people can be aware that help exists everywhere.
+            While our site can be helpful, we also recommend that those with
+            depression seek help from friends and family, as well as
+            profesionals on the subject.
+        </p>
+        <p align = "center">If you would like more information on the subject of the
+            symptoms,
+            patterns, and treatment, both medical and personal, we highly
+            recommend
+            that you refer to the links below as they are trusted sources
+            on the
+            matter:
+        </p>
+    </div>
+        <br>
+        <div class="link">  
+        <a href="https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007"
+        target="_blank">
+           <h2 align = "center">The Mayo Clinic</h2>
+        </a>
+        <br>
+        <br>
+        <a href="https://my.clevelandclinic.org/health/diseases/9290-depression"
+        target="_blank">
+            <h2 align = "center">Cleveland Clinic</h2>
+        </a>
+        <br>
+        <br>
+        <a href="https://www.nimh.nih.gov/health/topics/depression"
+        target="_blank">
+            <h2 align = "center">The National Institute of Mental Health</h2>
+        </a>
+        <br>
+        <br>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/depression"
+        target="_blank">
+            <h2 align = "center">The World Health Organization</h2>
+        </a>
+        </div>
+        <br>
+        <br>
+        <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+        <script>
+            const hamburger = document.getElementById('hamburger');
+        const menuItems = document.getElementById('menuItems');
+
+        hamburger.addEventListener('click', () => {
+            menuItems.classList.toggle('show');
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        </script>
+    </body>
+</html>

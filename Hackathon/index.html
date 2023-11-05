@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Box</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightblue;
+            background-image: url(cool-background.png);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #3b53ebf6;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .chatbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .chatbox {
+            width: 500px;
+            max-height: 500px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .message {
+            background-color: #3b53ebf6;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-width: 70%; /* Adjust as needed */
+            align-self: flex-end; /* Right-align user messages */
+        }
+
+        .bot-message {
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-width: 70%; /* Adjust as needed */
+            align-self: flex-start; /* Left-align bot messages */
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #send-button {
+            padding: 5px 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3b53ebf6;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            padding: 15px;
+            margin-left: 20px;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            display: none;
+        }
+
+        .menu-items.show {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #3b53ebf6;
+            width: 100%;
+        }
+
+        .menu-items li {
+            margin: 10px 0;
+        }
+
+        .menu-items a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 80px 20px 20px 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Chat Box</h1>
+    </div>
+    <div class="menu">
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="menu-items" id="menuItems">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="joke.html">More Information</a></li>
+            <li><a href="Amyyy.html">About Us</a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </div>
+    <div class="chatbox-container">
+        <div class="chatbox" id="chatbox">
+            <div class="bot-message">Hello! How can I assist you today?</div>
+        </div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+    <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        function sendMessage() {
+            const userMessage = document.getElementById("user-input").value;
+            const chatbox = document.getElementById("chatbox");
+            
+            if (userMessage.trim() === "") {
+                return; // Don't add empty messages
+            }
+            
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.className = "message";
+            userMessageDiv.textContent = userMessage;
+            chatbox.appendChild(userMessageDiv);
+            
+            document.getElementById("user-input").value = ""; // Clear the input field
+            
+            // Simulated bot response
+            setTimeout(function() {
+                const botMessageDiv = document.createElement("div");
+                botMessageDiv.className = "bot-message";
+                botMessageDiv.textContent = "Thank you for your message.";
+                chatbox.appendChild(botMessageDiv);
+            }, 1000); // Simulated response delay
+        }
+        const hamburger = document.getElementById('hamburger');
+        const menuItems = document.getElementById('menuItems');
+
+        hamburger.addEventListener('click', () => {
+            menuItems.classList.toggle('show');
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
+

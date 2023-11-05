@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: lightblue;
+            background-image: url(cool-background.png);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #3b53ebf6;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .menu {
+            background-color: #3b53ebf6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .hamburger {
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        .menu-items {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu-items li {
+            margin: 0 20px;
+        }
+
+        .menu-items a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .team-member {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        .team-member img {
+            max-width: 100%;
+        }
+
+        .team-member h2 {
+            font-size: 24px;
+        }
+
+        .team-member p {
+            font-size: 16px;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #3b53ebf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+    </header>
+    <div class="menu">
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="menu-items" id="menuItems">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="joke.html">More Information</a></li>
+            <li><a href="Amyyy.html">About Us</a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Meet Our Team</h2>
+        <div class="team-member">
+            <h2>Amy Ojeda Flores</h2>
+            <p>Amy is a Junior from Union Springs, AL. A fun fact about her is that she has watched Hunter x Hunter 3 times, and is currently rewatching it!</p>
+        </div>
+        <div class="team-member">
+            <h2>Aaron Crowe</h2>
+            <p>Aaron is a Senior from Prattville, AL. A fun fact about him is that he is an Eagle Scout.</p>
+        </div>
+        <div class="team-member">
+            <h2>Kellen Humphries</h2>
+            <p>Kellen is Sophomore from Auburn, AL. A fun fact about him is that he has been to Canada, but only 2 miles.</p>
+        </div>
+        <div class="team-member">
+            <h2>Elijah Harville</h2>
+            <p>Elijah is a Senior from Birmingham, AL. A fun fact about him is that he can beat anybody at chess.</p>
+        </div>
+    </div>
+    <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const menuItems = document.getElementById('menuItems');
+
+        hamburger.addEventListener('click', () => {
+            menuItems.classList.toggle('show');
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
